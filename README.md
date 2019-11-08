@@ -21,8 +21,9 @@ npm install cron-cluster
 Cron cluster use the same API as the original CronJob.
 
 ```js
-var redis = require('redis').createClient()
-var CronJob = require('cron-cluster')(redis).CronJob
+var Leader = require('redis-leader')
+var leader = new Leader(redis, leaderOptions);
+var CronJob = require('cron-cluster')(leader).CronJob
 
 function doCron () {
   var job = new CronJob('* * * * * *', function () {
@@ -36,8 +37,9 @@ It is possible to initialize CronJob with an object passed as parameter and run 
 Cron-cluster is compatible with original cron. More in test/cron-cluster-compatibility-check.js
 
 ```js
-var redis = require('redis').createClient()
-var CronJob = require('cron-cluster')(redis).CronJob
+var Leader = require('redis-leader')
+var leader = new Leader(redis, leaderOptions);
+var CronJob = require('cron-cluster')(leader).CronJob
 
 function doCron () {
   var job = new CronJob({
@@ -59,8 +61,9 @@ Usage with Kue:
 ```js
 var kue = require('kue'),
     queue = kue.createQueue()
-var redis = require('redis').createClient()
-var CronJob = require('cron-cluster')(redis).CronJob
+var Leader = require('redis-leader')
+var leader = new Leader(redis, leaderOptions);
+var CronJob = require('cron-cluster')(leader).CronJob
 
 new CronJob('* * * * * *', function () {
   queue.create('log', {
