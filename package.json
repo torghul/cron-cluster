@@ -28,7 +28,7 @@
     "redis-leader": "^0.1.0"
   },
   "devDependencies": {
-    "async": "^1.4.2",
+    "async": "^2.6.4",
     "faucet": "0.0.1",
     "redis": "^1.0.0",
     "standard": "^5.2.1",
